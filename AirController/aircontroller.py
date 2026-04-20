@@ -353,7 +353,7 @@ def main() -> None:
     args = parse_arguments()
 
     logging_config.setup_logging(args.verbose)
-    # check_dependencies()
+    check_dependencies()
     validate_config()
 
     controller = AirController()
