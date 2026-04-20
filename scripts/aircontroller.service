@@ -1,0 +1,24 @@
+[Unit]
+Description=AirController - Automatic stereo/mono switching for AirPods
+Documentation=https://github.com/bondarenko-g/aircontroller
+After=sound.target pipewire.service pipewire-pulse.service pulseaudio.service
+Wants=sound.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/python3 /path/to/aircontroller/main.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=aircontroller
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/aircontroller
+
+[Install]
+WantedBy=default.target
